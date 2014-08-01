@@ -1,9 +1,8 @@
-source "http://api.berkshelf.com"
+source "https://supermarket.getchef.com"
 
 metadata
 
-
 #opscode community cookbooks
-cookbook "apt", git: "https://github.com/opscode-cookbooks/apt"
-cookbook "yum", git: "https://github.com/opscode-cookbooks/yum"
-cookbook "imagemagick", git: "https://github.com/someara/imagemagick"
+cookbook 'apt', '~> 2.4.0'
+cookbook 'yum', '~> 3.2.2'
+cookbook 'imagemagick', '~> 0.2.3'
