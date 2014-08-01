@@ -1,4 +1,4 @@
-name             'opsworks-custom-cookbook'
+name             'opsworks-custom-cookbooks'
 maintainer       'YOUR_COMPANY_NAME'
 maintainer_email 'YOUR_EMAIL'
 license          'All rights reserved'
@@ -8,3 +8,4 @@ version          '0.1.0'
 
 depends 'apt'
 depends 'yum'
+depends 'imagemagick'
