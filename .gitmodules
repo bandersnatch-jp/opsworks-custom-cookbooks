@@ -4,3 +4,6 @@
 [submodule "cookbooks/yum"]
 	path = cookbooks/yum
 	url = git@github.com:opscode-cookbooks/yum.git
+[submodule "cookbooks/imagemagick"]
+	path = cookbooks/imagemagick
+	url = git@github.com:someara/imagemagick.git
