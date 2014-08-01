@@ -1,9 +1,0 @@
-[submodule "site-cookbooks/imagemagick"]
-	path = site-cookbooks/imagemagick
-	url = git@github.com:someara/imagemagick.git
-[submodule "site-cookbooks/yum"]
-	path = site-cookbooks/yum
-	url = git@github.com:opscode-cookbooks/yum.git
-[submodule "site-cookbooks/apt"]
-	path = site-cookbooks/apt
-	url = git@github.com:opscode-cookbooks/apt.git
