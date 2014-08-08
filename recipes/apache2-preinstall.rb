@@ -27,7 +27,16 @@ service "php5-fpm" do
   action :stop
 end
 
-
+directory "/home/#{node['apache']['user']}" do
+owner node['apache']['user']
+group node['apache']['group']
+mode 0755
+recursive true
+action :create
+not_if do
+File.exists?("/home/#{node['apache']['user']}")
+end
+end
 
 user "#{node['apache']['user']}" do
   gid "#{node['apache']['group']}"
@@ -35,7 +44,6 @@ user "#{node['apache']['user']}" do
   home "/home/#{node['apache']['user']}"
   shell "/bin/bash"
   system true
-  supports :manage_home=>true
   action   [:create, :manage]
 end
 
