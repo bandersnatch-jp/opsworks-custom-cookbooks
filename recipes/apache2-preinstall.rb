@@ -19,17 +19,21 @@
 group "#{node['apache']['group']}" do
   action :create
 end
-directory "/var/www" do
-  owner "#{node['apache']['user']}"
-  group "#{node['apache']['group']}"
-  mode 00755
-  action :create
+
+service "apache2" do
+  action :stop
 end
 
 user "#{node['apache']['user']}" do
   gid "#{node['apache']['group']}"
   comment "apache2 user"
+  home "/home/#{node['apache']['user']}"
   shell "/bin/bash"
   system true
-  action :create
+  supports :manage_home=>true
+  action   [:create, :manage]
+end
+
+service "apache2" do
+  action :start
 end
