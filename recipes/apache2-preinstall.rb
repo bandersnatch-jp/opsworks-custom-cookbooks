@@ -23,6 +23,11 @@ end
 service "apache2" do
   action :stop
 end
+service "php5-fpm" do
+  action :stop
+end
+
+
 
 user "#{node['apache']['user']}" do
   gid "#{node['apache']['group']}"
@@ -35,5 +40,8 @@ user "#{node['apache']['user']}" do
 end
 
 service "apache2" do
+  action :start
+end
+service "php5-fpm" do
   action :start
 end
