@@ -26,4 +26,6 @@ user "#{node['apache']['user']}" do
   home "/home/#{node['apache']['user']}"
   shell "/bin/bash"
   system true
+  supports :manage_home=>true
+  action :create
 end
