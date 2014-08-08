@@ -20,6 +20,13 @@ group "#{node['apache']['group']}" do
   action :create
 end
 
+user "#{node['apache']['user']}" do
+  gid "#{node['apache']['group']}"
+  comment "apache2 user"
+  system true
+  action :create
+end
+
 service "apache2" do
   action :stop
 end
@@ -39,12 +46,9 @@ end
 end
 
 user "#{node['apache']['user']}" do
-  gid "#{node['apache']['group']}"
-  comment "apache2 user"
   home "/home/#{node['apache']['user']}"
   shell "/bin/bash"
-  system true
-  action   [:create, :manage]
+  action   :modify
 end
 
 service "apache2" do
