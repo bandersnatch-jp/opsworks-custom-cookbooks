@@ -27,12 +27,16 @@ user "#{node['apache']['user']}" do
   action :create
 end
 
-service "apache2" do
-  action :stop
-end
-service "php5-fpm" do
-  action :stop
-end
+
+#TODO EBSをブートデバイスにするとコレだと順番によって上手く行かなくなるので一度削除
+
+
+#service "apache2" do
+#  action :stop
+#end
+#service "php5-fpm" do
+#  action :stop
+#end
 
 directory "/home/#{node['apache']['user']}" do
 owner node['apache']['user']
@@ -51,9 +55,9 @@ user "#{node['apache']['user']}" do
   action   :modify
 end
 
-service "apache2" do
-  action :start
-end
-service "php5-fpm" do
-  action :start
-end
+#service "apache2" do
+#  action :start
+#end
+#service "php5-fpm" do
+#  action :start
+#end
