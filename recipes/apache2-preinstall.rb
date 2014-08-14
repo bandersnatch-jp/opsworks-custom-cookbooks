@@ -23,7 +23,41 @@ end
 user "#{node['apache']['user']}" do
   gid "#{node['apache']['group']}"
   comment "apache2 user"
+  system true
+  action :create
+end
+
+
+#TODO EBSをブートデバイスにするとコレだと順番によって上手く行かなくなるので一度削除
+
+
+#service "apache2" do
+#  action :stop
+#end
+#service "php5-fpm" do
+#  action :stop
+#end
+
+directory "/home/#{node['apache']['user']}" do
+owner node['apache']['user']
+group node['apache']['group']
+mode 0755
+recursive true
+action :create
+not_if do
+File.exists?("/home/#{node['apache']['user']}")
+end
+end
+
+user "#{node['apache']['user']}" do
   home "/home/#{node['apache']['user']}"
   shell "/bin/bash"
-  system true
+  action   :modify
 end
+
+#service "apache2" do
+#  action :start
+#end
+#service "php5-fpm" do
+#  action :start
+#end
